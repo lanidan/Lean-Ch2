@@ -14,7 +14,7 @@ public class Controles : MonoBehaviour
    private Animator anim; //Creamos una variable del tipo Animator para poder utilizarlo en el Script
     private bool salto; //Esta variable es la encargada se saber si saltamos o no.
     
-   // private bool movimiento =true; // creamos una variable para activar o desactivar el movimiento
+    private bool movimiento =true; // creamos una variable para activar o desactivar el movimiento
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +36,7 @@ public class Controles : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal"); //La biblioteca de unity nos permite utilizar el GetAxis que nos servirá para detectar el eje horizontal cuando apretemos un boton de derecha o izq. De aqui tomamos la dirección
        
-    //    if (!movimiento) h = 0; // Si el movimiento es falso, desactiva el movimiento   
+        if (!movimiento) h = 0; // Si el movimiento es falso, desactiva el movimiento   
         
         rb2d.AddForce(Vector2.right * velocidad * h); //Le agregamos una nueva fuerza a nuestro RigidBody, que va a ser el resultado de la multiplicacion de un vector que apunta a la derecha (Vector2.right), la velocidad y h
         float velocidadlimit = Mathf.Clamp(rb2d.velocity.x, -velocidadmax, velocidadmax); //Con clamp fijamos un valor entre un maximo y un minimo. Solo establecemos los limites
@@ -61,7 +61,7 @@ public class Controles : MonoBehaviour
         
     } 
    //Saltar cuando pisamos un enemigo
-      /*  
+        
         public void SaltarEnemigo(){ //Creamos un llamado a Saltar enemigo
             salto = true;  //Ponemos Saltar como verdadero
         }
@@ -76,5 +76,5 @@ public class Controles : MonoBehaviour
 
         void Habilitarmovimiento(){ //creamos un llamado al movimiento
             movimiento= true; //Ponemos el movimiento como verdadero 
-        }*/
+        }
 }

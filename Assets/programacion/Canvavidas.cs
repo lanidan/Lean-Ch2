@@ -15,9 +15,10 @@ public class Canvavidas : MonoBehaviour
     void Start()
     {
         animvida = GetComponent<Animator>(); //tomamos el animator y lo guardamos en la variable animvida
+        vida=4;
     }
        void Update()
     {
-        animvida.SetInteger("vida", vida); //Vinculamos el script con el parametro de la animacion
+        animvida.SetInteger("vidas", vida); //Vinculamos el script con el parametro de la animacion
     }
 }
