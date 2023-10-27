@@ -28,17 +28,17 @@ public class ControlesEnemigos : MonoBehaviour
         rb2d.velocity = new Vector2(velocidad, rb2d.velocity.y); // le indicamos al rb2d la nueva velocidad
     }
      if (velocidad > 0f){  //Lo que dice esta linea es que la velocidad es positivo (Es decir, va hacia la derecha) pasará lo que esté entre los {}
-            transform.localScale = new Vector3(1f, 1f, 1f); //Lo que queremos modificar es un valor del componente "Transform" de Unity, especificamente el de Scale, para ello le enviamos un vector con los valores que nosotros deseamos (1,1,1) es decir, que mire hacia la derecha
+            transform.localScale = new Vector3(4.06f, 3.25f, 1f); //Lo que queremos modificar es un valor del componente "Transform" de Unity, especificamente el de Scale, para ello le enviamos un vector con los valores que nosotros deseamos (1,1,1) es decir, que mire hacia la derecha
         }
         else if (velocidad < 0f){ //Lo que dice esta linea es que la velocidad es negativo (Es decir, va hacia la izquierda) pasará lo que esté entre los {}
-            transform.localScale = new Vector3(-1f, 1f, 1f); //Lo que queremos modificar es un valor del componente "Transform" de Unity, especificamente el de Scale, para ello le enviamos un vector con los valores que nosotros deseamos (-1,1,1) es decir, que mira hacia la izquierda
+            transform.localScale = new Vector3(-4.06f, 3.25f, 1f); //Lo que queremos modificar es un valor del componente "Transform" de Unity, especificamente el de Scale, para ello le enviamos un vector con los valores que nosotros deseamos (-1,1,1) es decir, que mira hacia la izquierda
         }
     }
 
     //Programación de eliminar al personaje
 
     void OnTriggerEnter2D(Collider2D col){  //llamamos a la funcion cuando trigger entra al collider 2D
-        if (col.gameObject.tag == "jugador"){ //Se lee como "Si la colision se produce con un tag jugador"
+        if (col.gameObject.tag == "Player"){ //Se lee como "Si la colision se produce con un tag jugador"
             
            float yResta = 0.7f; //Esto lo usamos como ajuste. Si no está este ajuste, cuando el jugador lo toca de frente se eliminaria
            if(transform.position.y + yResta < col.transform.position.y){ // Se lee como "Si la posicion del enemigo es menor a la posicion del jugador entonces..."
@@ -47,6 +47,7 @@ public class ControlesEnemigos : MonoBehaviour
                 Destroy(gameObject); //Esta linea es la encargada de desruir el objeto
            } else { //Sino
               // Controlador.GetComponent<Puntaje>().puntos -= 20; //Sumamos diez puntos al puntaje
+                   Canvavidas.vida -=2;
                col.SendMessage("RetrocesoEnemigo", transform.position.x);// Enviamos un mensaje a Controles con Retroceso enemigo y enviamos como argumento la posicion en x del enemigo
            }
         }
