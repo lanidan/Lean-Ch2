@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Canvavidas : MonoBehaviour
 {
@@ -20,5 +21,9 @@ public class Canvavidas : MonoBehaviour
        void Update()
     {
         animvida.SetInteger("vidas", vida); //Vinculamos el script con el parametro de la animacion
+        if(vida <= 0)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

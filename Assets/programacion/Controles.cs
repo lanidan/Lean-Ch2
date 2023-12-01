@@ -9,7 +9,7 @@ public class Controles : MonoBehaviour
     private Rigidbody2D rb2d; //Creamos una variable del tipo RigidBody para poder utilizarlo dentro del script
     public bool suelo;
     public float saltofuerza = 6.7f; //Representa la fuerza el salto que le vamos a aplicar a nuestro personaje
-    
+    public Vector3 posicionIni; //Creamos la variable que va a contener la posicion que deseamos
     
    private Animator anim; //Creamos una variable del tipo Animator para poder utilizarlo en el Script
     private bool salto; //Esta variable es la encargada se saber si saltamos o no.
@@ -76,5 +76,10 @@ public class Controles : MonoBehaviour
 
         void Habilitarmovimiento(){ //creamos un llamado al movimiento
             movimiento= true; //Ponemos el movimiento como verdadero 
+        }
+        public void Caida(){
+            Canvavidas.vida -= 1; //Cantidad de vidas que me resta
+            transform.position = posicionIni; //Paso a la posiciòn que me piden
+            rb2d.velocity = new Vector2(0,0);
         }
 }
